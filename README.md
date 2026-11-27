@@ -1,5 +1,9 @@
 # token-unlock-calendar MCP server
 
+[![Token Unlock Calendar MCP connector](https://glama.ai/mcp/connectors/io.github.headgoldpicker/token-unlock-calendar/badges/score.svg)](https://glama.ai/mcp/connectors/io.github.headgoldpicker/token-unlock-calendar)
+
+Listed in the [MCP Registry](https://registry.modelcontextprotocol.io/v0.1/servers?search=token-unlock-calendar) and on [Glama](https://glama.ai/mcp/connectors/io.github.headgoldpicker/token-unlock-calendar).
+
 A small live MCP server serving the token unlock calendar and the verified
 token figures from the token pages. Two read-only tools, no accounts, no
 payments, no writes. Free, general information only, not financial advice.

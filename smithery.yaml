@@ -1,0 +1,6 @@
+# Smithery manifest for the token-unlock-calendar MCP server.
+# Remote server: no install, no config, no auth. Smithery inspects the
+# live endpoint and lists the tools it answers.
+startCommand:
+  type: url
+  url: https://token-unlock-calendar.printer-grandee0c.workers.dev/mcp
