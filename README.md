@@ -8,11 +8,43 @@ A small live MCP server serving the token unlock calendar and the verified
 token figures from the token pages. Two read-only tools, no accounts, no
 payments, no writes. Free, general information only, not financial advice.
 
+## Connect
+
+Live endpoint: `https://token-unlock-calendar.printer-grandee0c.workers.dev/mcp`
+
+[![Add to Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/install-mcp?name=token-unlock-calendar&config=eyJ1cmwiOiJodHRwczovL3Rva2VuLXVubG9jay1jYWxlbmRhci5wcmludGVyLWdyYW5kZWUwYy53b3JrZXJzLmRldi9tY3AifQ%3D%3D)
+[![Install in VS Code](https://img.shields.io/badge/VS_Code-Install_Server-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect/mcp/install?name=token-unlock-calendar&config=%7B%22name%22%3A%22token-unlock-calendar%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Ftoken-unlock-calendar.printer-grandee0c.workers.dev%2Fmcp%22%7D)
+[![Add to Claude](https://img.shields.io/badge/Add%20to-Claude-D97757?style=flat-square)](https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=token-unlock-calendar&connectorUrl=https%3A%2F%2Ftoken-unlock-calendar.printer-grandee0c.workers.dev%2Fmcp)
+
+Or add it by hand. Claude Code:
+
+```sh
+claude mcp add --transport http token-unlock-calendar https://token-unlock-calendar.printer-grandee0c.workers.dev/mcp
+```
+
+Cursor (`.cursor/mcp.json`) and Claude Desktop:
+
+```json
+{
+  "mcpServers": {
+    "token-unlock-calendar": {
+      "url": "https://token-unlock-calendar.printer-grandee0c.workers.dev/mcp"
+    }
+  }
+}
+```
+
+Claude skill, which tells Claude which tool to call for which question:
+
+```sh
+npx skills add headgoldpicker/token-unlock-calendar
+```
+
 ## Tools
 
-- `get_unlock_calendar` — the 12 upcoming unlock and market events
+- `get_unlock_calendar`: the 12 upcoming unlock and market events
   (XRP, SUI, HYPE, UNI, PYTH, PENDLE, Fed, CGT). Optional `token` filter.
-- `get_token_figures` — latest verified price, cap and diligence figures
+- `get_token_figures`: latest verified price, cap and diligence figures
   for BTC, ETH, SOL, XRP, HYPE, LINK, ZEC, XMR, TAO, SUI, UNI, ADA,
   PYTH, SYRUP and AKT, plus ETF flows and Fear and Greed.
   Optional `token` filter. Any token in `data.json` with a price works.
@@ -71,14 +103,6 @@ curl "https://registry.modelcontextprotocol.io/v0.1/servers?search=token-unlock-
 Glama picks up a Registry listing on its hourly sync, so no separate
 Glama submission is needed. addrbook reads the Registry hourly too, and
 its probe can also be given the live endpoint URL directly.
-
-## What is still needed before this goes live
-
-1. A Cloudflare account in Gruffin's name, to deploy the Worker and get
-   the stable `workers.dev` URL.
-2. The deployed public URL, to fill in `<HOST>` in `server.json` (the
-   GitHub side is done: repo `headgoldpicker/token-unlock-calendar` is
-   public and `server.json` already names it).
 
 No wallet and no paid route are involved. PayAI stays out of scope until
 a paid x402 route and a USDC wallet exist, which is a separate decision.
