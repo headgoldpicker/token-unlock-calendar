@@ -40,9 +40,16 @@ Then `tools/list` and `tools/call` for each tool. A client must send the
 
 ## Deploy (free tier)
 
-Any Node host works. Render, Railway and Fly.io all have a free tier.
-Deploy this folder as a Node service with `npm install` and `npm start`,
-and note the public URL. That URL plus `/mcp` is the endpoint.
+Chosen host is Cloudflare Workers: always on, no cold starts, no card,
+free tier fits. `worker.js` is the same server as a Worker (`wrangler.toml`,
+`main = "worker.js"`), stateless, same `data.json`. Run it locally with
+`npx wrangler dev`, or deploy it free from the repo through Cloudflare
+Workers Builds, which gives a stable
+`https://token-unlock-calendar.<subdomain>.workers.dev` address. That URL
+plus `/mcp` is the endpoint.
+
+The plain Node version (`server.js`, `npm install`, `npm start`, port 3000)
+still works on any Node host (Render, Railway, Fly.io) as a fallback.
 
 ## Publish to the MCP Registry
 
@@ -63,12 +70,11 @@ its probe can also be given the live endpoint URL directly.
 
 ## What is still needed before this goes live
 
-1. A GitHub account in Gruffin's name (his sign-in). The Registry
-   namespace is `io.github.<username>`, and Glama needs a public repo.
-2. A free-tier host account in his name (Render, Railway, Fly.io or
-   Cloudflare Workers), or deploy through a browser session he signs
-   in to.
-3. The deployed public URL, to fill in `<HOST>` in `server.json`.
+1. A Cloudflare account in Gruffin's name, to deploy the Worker and get
+   the stable `workers.dev` URL.
+2. The deployed public URL, to fill in `<HOST>` in `server.json` (the
+   GitHub side is done: repo `headgoldpicker/token-unlock-calendar` is
+   public and `server.json` already names it).
 
 No wallet and no paid route are involved. PayAI stays out of scope until
 a paid x402 route and a USDC wallet exist, which is a separate decision.

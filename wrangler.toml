@@ -1,0 +1,4 @@
+name = "token-unlock-calendar"
+main = "worker.js"
+compatibility_date = "2026-11-27"
+compatibility_flags = ["nodejs_compat"]
