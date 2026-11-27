@@ -1,0 +1,1 @@
+{"dependencies":{"@modelcontextprotocol/sdk":"^1.0.0","express":"^4.21.0","zod":"^3.23.0"},"description":"Token unlock dates and checked figures for PYTH, SYRUP, AKT and PENDLE. Free, general information only, not financial advice.","license":"MIT","main":"server.js","name":"token-unlock-calendar","scripts":{"start":"node server.js"},"type":"module","version":"1.0.0"}
